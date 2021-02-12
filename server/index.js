@@ -3,7 +3,12 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import postRoutes from './routes/posts.js';
+
 const app = express();
+
+// every route inside of the post routes is gonna start with endpoint /posts
+app.use('/posts', postRoutes);
 
 // Put a limit on image size
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -22,3 +27,6 @@ const PORT = process.env.PORT || 5000;
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => app.listen(PORT, () => console.log(`Server running on port : ${PORT}`)))
     .catch((error) => console.log(error.message));
+
+// suppress console warnings
+mongoose.set('useFindAndModify', false);

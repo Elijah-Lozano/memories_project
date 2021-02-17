@@ -4,7 +4,7 @@ export const getPosts = async (req, res) => {
     try{
         // since finding all the post messages takes time, it is an async action
         // so we need to add await and make the function async
-        const postMessages = await PostMessage.find()
+        const postMessages = await PostMessage.find();
 
         console.log(postMessages);
 

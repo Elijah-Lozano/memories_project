@@ -2,13 +2,23 @@ import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import useStyles from './styles.js';
 import FileBase from 'react-file-base64';
+import { useDispatch } from "react-redux";
+import { createPost } from "../../actions/posts";
+
+
 // Form functional component with hook for state management
 const Form = () => {
 
     const [postData, setPostData] = useState({creator: '', title: '', message: '', tags: '', selectedFile: ''});
     const classes = useStyles();
+    const dispatch = useDispatch();
 
-    const handleSubmit = () => {}
+    const handleSubmit = (e) => {
+        // use this to prevent refresh fills from browser
+        e.preventDefault();
+
+        dispatch(createPost(postData));
+    }
     const clear = () => {}
 
     return (

@@ -7,3 +7,4 @@ const url = 'http://localhost:5000/posts';
 
 // get call to our posts url.
 export const fetchPosts = () => axios.get(url);
+export const createPost = (newPost) => axios.post(url, newPost);

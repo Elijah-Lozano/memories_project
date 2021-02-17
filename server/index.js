@@ -7,7 +7,6 @@ import postRoutes from './routes/posts.js';
 
 const app = express();
 
-
 // deal with CORS
 app.use(cors());
 // every route inside of the post routes is gonna start with endpoint /posts

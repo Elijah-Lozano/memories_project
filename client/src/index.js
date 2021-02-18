@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // allows us to keep track of global state accessible from anywhere inside the app
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import reducers from './reducers';

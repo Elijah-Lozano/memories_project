@@ -18,9 +18,6 @@ const Form = () => {
     const handleSubmit = async (e) => {
         // use this to prevent refresh fills from browser
         e.preventDefault();
-
-        console.log(postData);
-
         dispatch(createPost(postData));
     }
     const clear = () => {}

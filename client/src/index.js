@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import reducers from './reducers';
-
+import './index.css';
 import App from './App';
 
 // use redux to create a store that makes state globally accessible to the whole app

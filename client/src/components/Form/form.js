@@ -3,14 +3,14 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import useStyles from './styles.js';
 import FileBase from 'react-file-base64';
 import { useDispatch } from "react-redux";
-import { createPost } from "../../actions/posts.js";
+import { createPost, updatePost } from "../../actions/posts.js";
 
+// get the current id of the post we're on
 
 // Form functional component with hook for state management
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
 
     const [postData, setPostData] = useState({creator: '', title: '', message: '', tags: '', selectedFile: ''});
-
 
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -18,7 +18,13 @@ const Form = () => {
     const handleSubmit = async (e) => {
         // use this to prevent refresh fills from browser
         e.preventDefault();
-        dispatch(createPost(postData));
+
+        if(currentId) {
+            dispatch(updatePost(currentId, postData));
+        }
+        else {
+            dispatch(createPost(postData));
+        }
     }
     const clear = () => {}
 

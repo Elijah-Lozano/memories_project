@@ -19,3 +19,5 @@ export const createPost = (newPost) => {
     return axios.post(url, newPost, config)
         .then(res => {return res})
 };
+
+export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);

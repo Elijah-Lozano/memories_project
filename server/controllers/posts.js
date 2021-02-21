@@ -1,8 +1,8 @@
 import PostMessage from "../models/postMessage.js";
+import mongoose from "mongoose";
 
 export const getPosts = async (req, res) => {
     try{
-
         // since finding all the post messages takes time, it is an async action
         // so we need to add await and make the function async
         const postMessages = await PostMessage.find();
@@ -27,4 +27,17 @@ export const createPost = async (req, res) => {
         res.status(409).json({ message: error.message });
    }
 
+}
+
+export const updatePost = async (req, res) => {
+    //destructure and rename to _id
+    const { id: _id } = req.params;
+    const post = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(_id))
+        return res.status(404).send('Error: No post found with that id');
+
+   const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, { new:  true });
+
+   res.json(updatedPost);
 }
